@@ -36,7 +36,7 @@ $this->validate($request,
          if(Auth::attempt($datalogin) )
         {
            
-            return redirect('home');
+            return redirect('e-stu/home');
 
         }
         else

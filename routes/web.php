@@ -23,13 +23,13 @@ Route::get('logout',
     'as'=> 'logout',
     'uses'=> 'MyController@getlogout'
 ]);
- Route::get('home',//redirect
+
+Route::group(['prefix'=>'e-stu','middleware'=>'forceLogin'],function(){
+     Route::get('home',//redirect
 [   
     'as'=> 'home',//route
     'uses'=> 'MyController@getIndex'
 ]);
-Route::group(['prefix'=>'e-stu','middleware'=>'forceLogin'],function(){
-
     Route::group(['prefix'=>'qlgiadien'],function(){
         Route::get('danhsach','GiaDienController@getDanhSach');
 
@@ -72,6 +72,20 @@ Route::group(['prefix'=>'e-stu','middleware'=>'forceLogin'],function(){
         Route::post('sua/{id}','NhanVienController@XuLySua');
 
         Route::get('xoa/{id}','NhanVienController@XuLyXoa');
+    });
+     Route::group(['prefix'=>'qldk'],function(){
+        Route::get('danhsach','DienKeController@getDanhSach');
+
+        Route::get('them','DienKeController@getThem');
+        Route::post('xulythem','DienKeController@postThem');
+
+
+        Route::get('sua/{id}','DienKeController@getSua');
+
+        
+        Route::post('sua/{id}','DienKeController@XuLySua');
+
+        Route::get('xoa/{id}','DienKeController@XuLyXoa');
     });
 });
 

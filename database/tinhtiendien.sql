@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 12, 2019 lúc 07:56 AM
+-- Thời gian đã tạo: Th4 16, 2019 lúc 01:37 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
 -- Phiên bản PHP: 7.1.27
 
@@ -41,6 +41,30 @@ INSERT INTO `chucvu` (`macv`, `tencv`) VALUES
 (1, 'Admin'),
 (2, 'Ghi số điện'),
 (3, 'Thu ngân');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `dienke`
+--
+
+CREATE TABLE `dienke` (
+  `madk` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tendk` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ngaysx` datetime NOT NULL,
+  `ngaylap` timestamp NULL DEFAULT NULL,
+  `trangthai` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `makh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `dienke`
+--
+
+INSERT INTO `dienke` (`madk`, `tendk`, `ngaysx`, `ngaylap`, `trangthai`, `makh`) VALUES
+('DKCE-14G', 'CE-14G', '2018-04-11 00:00:00', '2019-04-16 11:14:49', '1', 'KH087'),
+('DKCE-6Y', 'CE-6Y', '2019-04-16 00:00:00', NULL, '0', NULL),
+('DKCE-N43', 'CE-N43', '2019-04-16 00:00:00', NULL, '2', NULL);
 
 -- --------------------------------------------------------
 
@@ -111,7 +135,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2019_04_08_064731_chucvu', 1),
 (7, '2019_04_09_025555_giadien', 4),
 (12, '2019_04_09_145810_khachhang', 6),
-(13, '2014_10_12_000000_create_users_table', 7);
+(13, '2014_10_12_000000_create_users_table', 7),
+(20, '2019_04_16_015756_dienke', 8);
 
 -- --------------------------------------------------------
 
@@ -136,7 +161,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`manv`, `tennv`, `email`, `password`, `diachi`, `cmnd`, `sdt`, `hinhanh`, `chucvu`) VALUES
-('PE1082', 'Lê Tuân', 'letuan@stu', '$2y$10$IFgeLr89k4jz0Vjt9bAwiee8ljxBrvGtoWVL0QRmM7Riz9YReopnC', 'Bình Tân , HCM', '212579082', '395563446', 'tuan.jpg', 1),
+('PE1082', 'Lê Tuân2', 'letuan@stu', '$2y$10$IFgeLr89k4jz0Vjt9bAwiee8ljxBrvGtoWVL0QRmM7Riz9YReopnC', 'Bình Tân , HCM', '212579082', '3955634464', 'tuan.jpg', 1),
 ('PE2002', 'Huỳnh An', 'huynhan1996@stu', '$2y$10$lPmHZQtS7xSA1v5./wbdd.i2wIqP81SSmSJKxUBH6kr.CsLN2xt2W', 'Tân Phú , HCM', '212579002', '395563446', 'an.jpg', 2),
 ('PE3003', 'Cẩm Tú', 'camtu@stu', '$2y$10$DaOcILatc2EEP.3Hw4GU2OcxRJAqi0Lek67G7iy9X2r77./DR2CXS', 'Quận 8 , HCM', '212579003', '395563446', 'tu.jpg', 3);
 
@@ -149,6 +174,13 @@ INSERT INTO `users` (`manv`, `tennv`, `email`, `password`, `diachi`, `cmnd`, `sd
 --
 ALTER TABLE `chucvu`
   ADD PRIMARY KEY (`macv`);
+
+--
+-- Chỉ mục cho bảng `dienke`
+--
+ALTER TABLE `dienke`
+  ADD PRIMARY KEY (`madk`),
+  ADD KEY `dienke_makh_foreign` (`makh`);
 
 --
 -- Chỉ mục cho bảng `giadien`
@@ -196,11 +228,17 @@ ALTER TABLE `giadien`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
 --
+
+--
+-- Các ràng buộc cho bảng `dienke`
+--
+ALTER TABLE `dienke`
+  ADD CONSTRAINT `dienke_makh_foreign` FOREIGN KEY (`makh`) REFERENCES `khachhang` (`makh`) ON DELETE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `users`

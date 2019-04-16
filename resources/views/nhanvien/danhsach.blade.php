@@ -27,8 +27,7 @@
               <div style="margin-bottom:10px;" >
              
                  <button style="margin-left:30px" type="button" onclick="javascript:window.location.href='e-stu/qlnv/them'" class="btn btn-success"><i class="fa fa-plus-circle">&nbsp;Thêm Nhân Viên</i></button>
-                  <input style="float: right;margin-right:30px" type="search" name="search" placeholder="Tìm kiếm...">
-                  <img style="float: right;"src="https://img.icons8.com/color/35/000000/search.png">
+                
                 </div>
              
               </div>

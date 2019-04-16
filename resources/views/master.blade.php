@@ -80,7 +80,7 @@
               </a>
           </li>
             <li>
-            <a href="ql_dienke.html">
+            <a href="e-stu/qldk/danhsach">
               <i class="fa fa-flash" ></i>
               <span>Quản lí điện kế</span>
               </a>
@@ -97,22 +97,27 @@
               <span>Quản lí khách hàng</span>
               </a>
           </li>
-          @endcan
-          @can('isGhidien')
+          
+            @endcan
+            @if(Gate::check('isAdmin') || Gate::check('isGhidien'))
              <li>
             <a href="ql_ghisodien.html">
               <i class="fa fa-file-text" ></i>
               <span>Ghi số điện</span>
               </a>
-          </li>  @endcan  
-          @can('isThutien')
+          </li>  
+       @endif
+        @if(Gate::check('isAdmin') || Gate::check('isThutien'))
        <li>
             <a href="ql_thanhtoan.html">
               <i class="fa fa-money" ></i>
               <span>Thanh toán hóa đơn</span>
               </a>
-          </li>    @endcan
-         
+          </li>   
+           @endif
+
+
+
         </ul>
         <!-- sidebar menu end-->
       </div>
