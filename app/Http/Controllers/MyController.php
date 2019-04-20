@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\User;
+use App\Models\Hoadon;
+use App\Models\KhachHang;
+use App\Models\DienKe;
 class MyController extends Controller
 {
     public function getLogin(){
@@ -55,8 +58,6 @@ public function getlogout()
         Auth::logout();
         return redirect('/')->with('status2','Đăng xuất thành công');
     }
-
-
 
 
 }

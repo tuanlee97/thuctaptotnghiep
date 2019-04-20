@@ -2,13 +2,13 @@
 @section('link')
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-   <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+<!--    <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" /> -->
   <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
   <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
   <!-- Custom styles for this template -->
   <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
-  <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
-  <script src="lib/chart-master/Chart.js"></script>
+<!--   <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+  <script src="lib/chart-master/Chart.js"></script> -->
 @endsection
 @section('content')
     <!--header end-->
@@ -99,7 +99,7 @@
     
 @section('script')
 
-  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
+<!--   <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script> -->
     <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
   <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
   <!--script for this page-->

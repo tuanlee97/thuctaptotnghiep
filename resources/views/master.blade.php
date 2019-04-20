@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="Dashboard">
   <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <title>E-STU - Tập đoàn điện lực STU</title>
+  <title class="hidden-print">E-STU - Tập đoàn điện lực STU</title>
 
   <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
@@ -30,9 +30,10 @@
     Author: TemplateMag.com
     License: https://templatemag.com/license/
   ======================================================= -->
+
 </head>
 
-<body>
+<body >
   <section id="container">
     <!-- **********************************************************************************************************************************************************
         TOP BAR CONTENT & NOTIFICATIONS
@@ -48,7 +49,7 @@
       <div id="sidebar" class="nav-collapse ">
 
         <!-- sidebar menu start-->
-        <ul class="sidebar-menu" id="nav-accordion">
+        <ul class="sidebar-menu hidden-print" id="nav-accordion">
           
           <p class="centered"><a href="{{route('home')}}"><img src="img/users/{{Auth::user()->hinhanh}}" class="img-circle" width="80"></a></p>
           <h5 class="centered">{{Auth::user()->tennv}}</h5>
@@ -66,9 +67,9 @@
               <span>Tra cứu thông tin</span>
               </a>
               <ul class="sub">
-              <li><a href="tra_theodoinotiendien.html"> <i class="fa fa-money"></i>Theo dõi nợ tiền điện</a></li>
-              <li><a href="tra_khachhang.html"> <i class="fa fa-users"></i>Tra cứu khách hàng</a></li>
-              <li><a href="tra_dienke.html"> <i class="fa fa-bolt"></i>Tra cứu điện kế</a></li>
+              <li><a href="e-stu/tracuuno/dsno"> <i class="fa fa-money"></i>Theo dõi nợ tiền điện</a></li>
+              <li><a href="e-stu/tracuuno/dskh"> <i class="fa fa-users"></i>Tra cứu khách hàng</a></li>
+              <li><a href="e-stu/tracuuno/dsdk"> <i class="fa fa-bolt"></i>Tra cứu điện kế</a></li>
             </ul>
           </li>
 
@@ -101,7 +102,7 @@
             @endcan
             @if(Gate::check('isAdmin') || Gate::check('isGhidien'))
              <li>
-            <a href="ql_ghisodien.html">
+            <a href="e-stu/ghidien/truycap">
               <i class="fa fa-file-text" ></i>
               <span>Ghi số điện</span>
               </a>
@@ -109,7 +110,7 @@
        @endif
         @if(Gate::check('isAdmin') || Gate::check('isThutien'))
        <li>
-            <a href="ql_thanhtoan.html">
+            <a href="e-stu/thanhtoan/truycap">
               <i class="fa fa-money" ></i>
               <span>Thanh toán hóa đơn</span>
               </a>

@@ -1,8 +1,8 @@
 @extends('master')
 @section('link')
   <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
-  <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
-  <script src="lib/chart-master/Chart.js"></script>
+<!--   <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+  <script src="lib/chart-master/Chart.js"></script> -->
   <!-- Custom styles for this template -->
   <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
 @endsection

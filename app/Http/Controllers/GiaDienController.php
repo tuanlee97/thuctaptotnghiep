@@ -17,8 +17,8 @@ class GiaDienController extends Controller
             abort(404,"Sorry, You can do this actions");
         }
         $giadien = GiaDien::paginate(5);
-        
-        return view('giadien.danhsach',['giadien'=>$giadien]);
+        // return view('giadien.aa');
+      return view('giadien.danhsach',['giadien'=>$giadien]);
     }
     public function getThem()
     {   

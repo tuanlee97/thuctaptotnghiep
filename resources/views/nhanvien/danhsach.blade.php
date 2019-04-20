@@ -1,9 +1,9 @@
 @extends('master')
 @section('link')
 
-   <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+<!--    <link href="lib/advanced-datatable/css/demo_page.css" rel="stylesheet" />
   <link href="lib/advanced-datatable/css/demo_table.css" rel="stylesheet" />
-  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" />
+  <link rel="stylesheet" href="lib/advanced-datatable/css/DT_bootstrap.css" /> -->
   <!-- Custom styles for this template -->
 
 @endsection
@@ -94,9 +94,9 @@
     
 @section('script')
 
-  <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
+<!--   <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.js"></script>
     <script type="text/javascript" language="javascript" src="lib/advanced-datatable/js/jquery.dataTables.js"></script>
-  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script>
+  <script type="text/javascript" src="lib/advanced-datatable/js/DT_bootstrap.js"></script> -->
   <!--script for this page-->
 <script type="text/javascript">
         $(document).ready(function() {

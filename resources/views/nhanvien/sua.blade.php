@@ -1,14 +1,14 @@
 @extends('master')
 @section('link')
   <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
-  <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
-  <script src="lib/chart-master/Chart.js"></script>
+<!--   <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+  <script src="lib/chart-master/Chart.js"></script> -->
   <!-- Custom styles for this template -->
   <link rel="stylesheet" type="text/css" href="lib/bootstrap-fileupload/bootstrap-fileupload.css" />
 
-  <link href="admin_asset/css/bootstrap.min.css" rel="stylesheet">
+ <!--  <link href="admin_asset/css/bootstrap.min.css" rel="stylesheet">
     <link href="admin_asset/font-awesome/css/font-awesome.css" rel="stylesheet">
-
+ -->
 
 @endsection
 @section('content')
@@ -172,7 +172,7 @@
 @endsection
     
 @section('script')
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
     <script>
             $(document).ready(function(){
                 $("#changepass").click(function(){
@@ -187,15 +187,15 @@
                 });
             });
         </script>
-  <script src="lib/jquery-ui-1.9.2.custom.min.js"></script>
+<!--   <script src="lib/jquery-ui-1.9.2.custom.min.js"></script> -->
   <script type="text/javascript" src="lib/bootstrap-fileupload/bootstrap-fileupload.js"></script>
- <script src="lib/advanced-form-components.js"></script>
-  <script src="lib/jquery.sparkline.js"></script>
-    <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
-  <script type="text/javascript" src="lib/gritter-conf.js"></script>
-  <script src="lib/sparkline-chart.js"></script>
+<!--  <script src="lib/advanced-form-components.js"></script> -->
+ <!--  <script src="lib/jquery.sparkline.js"></script>
+    <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script> -->
+<!--   <script type="text/javascript" src="lib/gritter-conf.js"></script> -->
+<!--   <script src="lib/sparkline-chart.js"></script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(document).ready(function(){
   // convert selects already on the page at dom load
   $('select.form-control').combobox();  
@@ -207,11 +207,11 @@ $(document).ready(function(){
 //  $('input').focus(function(e){
 //    $('ul.dropdown-menu').toggle();
 //  });
-  
+
 });
 
 </script>
-
+  -->
   
 @endsection
 

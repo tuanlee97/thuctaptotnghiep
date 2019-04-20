@@ -11,29 +11,29 @@ class ChiTietHD_TableSeeder extends Seeder
      */
     public function run()
     {
-       //    $data =[ 
-    			// 	['idchitiet'=>"CT03123",
-    			// 	'tungay'=>"2019-02-13",
-    			// 	'denngay'=>"2019-03-15",
-    			// 	'csdau'=>0,
-    			// 	'cscuoi'=>35,
-    			// 	'tongthanhtien'=>59637,
-    			// 	'dntt'=>35,
-    			// 	'mahd'=>"HD03123"
-    			// 	]
-
-    			// ];
-
-       //  DB::table('cthoadon')->insert($data);
+       
       $data =[ 
-            ['idchitiet'=>"CT03123",
+            ['idchitiet'=>"CT0219123",
+            'tungay'=>"2019-01-13",
+            'denngay'=>"2019-02-13",
+            'csdau'=>0,
+            'cscuoi'=>71,
+            'tamtinh'=>111050,
+            'thue'=>11105,
+            'tongthanhtien'=>122155,
+            'dntt'=>71,
+            'mahd'=>"HD0219123"
+            ],
+            ['idchitiet'=>"CT0319087",
             'tungay'=>"2019-02-13",
             'denngay'=>"2019-03-15",
             'csdau'=>0,
-            'cscuoi'=>35,
-            'tongthanhtien'=>59637,
-            'dntt'=>35,
-            'mahd'=>"HD03123"
+            'cscuoi'=>130,
+            'tamtinh'=>213190,
+            'thue'=>21319,
+            'tongthanhtien'=>234509,
+            'dntt'=>130,
+            'mahd'=>"HD0319087"
             ]
 
           ];

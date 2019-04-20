@@ -87,5 +87,36 @@ Route::group(['prefix'=>'e-stu','middleware'=>'forceLogin'],function(){
 
         Route::get('xoa/{id}','DienKeController@XuLyXoa');
     });
+      Route::group(['prefix'=>'thanhtoan'],function(){
+     
+
+        Route::get('truycap','ThanhToanController@getTruycap');
+        Route::post('truycap','ThanhToanController@postTruycap');
+
+
+        Route::get('checkout/{id}','ThanhToanController@getCheckout');
+
+         Route::post('postcheckout/{id}','ThanhToanController@postCheckout');
+       
+          Route::get('success','ThanhToanController@getSuccess');
+        Route::get('print/{id}','ThanhToanController@getInhoadon');
+    });
+ Route::group(['prefix'=>'ghidien'],function(){
+
+        Route::get('truycap','GhiDienController@getTruycap');
+        Route::post('truycap','GhiDienController@postTruycap');
+
+         Route::post('xulighidien/{id}','GhiDienController@xulighidien');
+       
+          Route::get('success','GhiDienController@getSuccess');
+           
+        Route::post('print/{id}','GhiDienController@postInhoadon');
+    });
+
+       Route::group(['prefix'=>'tracuuno'],function(){
+        Route::get('dsno','tracuunoController@dsno');
+        Route::get('dskh','tracuunoController@dskh');
+       Route::get('dsdk','tracuunoController@dsdk');
+    });
 });
 

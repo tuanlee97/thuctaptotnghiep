@@ -1,8 +1,8 @@
 @extends('master')
 @section('link')
   <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
-  <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
-  <script src="lib/chart-master/Chart.js"></script>
+<!--   <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
+  <script src="lib/chart-master/Chart.js"></script> -->
   <!-- Custom styles for this template -->
 
 @endsection
@@ -108,13 +108,13 @@
   <!--script for this page-->
 
   
-  <script src="lib/jquery.sparkline.js"></script>
+ <!--  <script src="lib/jquery.sparkline.js"></script>
     <script type="text/javascript" src="lib/gritter/js/jquery.gritter.js"></script>
   <script type="text/javascript" src="lib/gritter-conf.js"></script>
-  <script src="lib/sparkline-chart.js"></script>
+  <script src="lib/sparkline-chart.js"></script> -->
   <script src="lib/zabuto_calendar.js"></script>
   
-<script src="js/jquery-1.11.1.min.js"></script>
+<!-- <script src="js/jquery-1.11.1.min.js"></script> -->
 <script type="text/javascript">
 $(function () {  
 $("#datepicker2").datepicker({         

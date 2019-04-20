@@ -40,7 +40,7 @@
          @csrf
         <h2 class="form-login-heading">ĐĂNG NHẬP</h2>
         <div class="login-wrap">
-          <input id="manv" class="form-control{{ $errors->has('manv') ? ' is-invalid' : '' }}" name ="manv" type="manv" placeholder="Mã nhân viên" value="{{ old('manv') }}" required autofocus>
+          <input id="manv" class="form-control{{ $errors->has('manv') ? ' is-invalid' : '' }}" name ="manv" type="text" placeholder="Mã nhân viên" value="{{ old('manv') }}" required autofocus>
                                 @if ($errors->has('manv'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('manv') }}</strong>

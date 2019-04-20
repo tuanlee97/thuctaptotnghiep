@@ -20,6 +20,8 @@ class Chitiethd extends Migration
             $table->datetime('denngay');
             $table->double('csdau');
             $table->double('cscuoi');
+            $table->double('tamtinh');
+            $table->double('thue');
             $table->double('tongthanhtien');
             $table->double('dntt');
             
