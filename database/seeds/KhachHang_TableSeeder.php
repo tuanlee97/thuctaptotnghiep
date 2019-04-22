@@ -30,7 +30,7 @@ class KhachHang_TableSeeder extends Seeder
 
     				],
     				['makh'=>"KH647",
-    				'tenkh'=>"Diễm Tường",
+    				'tenkh'=>"Thế Vinh",
     				'diachi'=>"Quận 8 , HCM",
     				'cmnd'=>"212552647",
     				'sdt'=>"0967564426",

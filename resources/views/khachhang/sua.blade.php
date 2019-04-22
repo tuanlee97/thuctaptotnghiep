@@ -23,10 +23,16 @@
           <div class="col-lg-12">
             <h4><i class="fa fa-angle-right"></i> Sửa khách hàng</h4>
             <div class="form-panel">
+              @if (session('thongbao'))
+        <div class="alert alert-danger" role="alert" >
+        {{ session('thongbao') }}
+        </div>
+          @endif
                  @if (session('status1'))
         <div class="alert alert-success" role="alert" >
         {{ session('status1') }}
         </div>
+
           @endif
                   @if(count($errors)>0)
                 <div class="alert alert-danger">
@@ -91,7 +97,7 @@
                 
                   <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Thêm</button>
+                      <button class="btn btn-theme" type="submit">Sửa</button>
                       <button class="btn btn-theme04" type="button" onclick="javascript:window.location.href='e-stu/qlkh/danhsach';">Hủy</button>
                     </div>
                   </div>

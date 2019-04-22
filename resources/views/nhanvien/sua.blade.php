@@ -138,7 +138,7 @@
                 
                   <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                      <button class="btn btn-theme" type="submit">Thêm</button>
+                      <button class="btn btn-theme" type="submit">Sửa</button>
                       <button class="btn btn-theme04" type="button" onclick="javascript:window.location.href='e-stu/qlnv/danhsach';">Hủy</button>
                     </div>
                   </div>

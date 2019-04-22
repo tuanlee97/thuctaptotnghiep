@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 20, 2019 lúc 04:41 PM
+-- Thời gian đã tạo: Th4 22, 2019 lúc 01:31 PM
 -- Phiên bản máy phục vụ: 10.1.38-MariaDB
 -- Phiên bản PHP: 7.1.27
 
@@ -52,8 +52,8 @@ CREATE TABLE `cthoadon` (
   `idchitiet` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `tungay` datetime NOT NULL,
   `denngay` datetime NOT NULL,
-  `csdau` double DEFAULT NULL,
-  `cscuoi` double DEFAULT NULL,
+  `csdau` double NOT NULL,
+  `cscuoi` double NOT NULL,
   `tamtinh` double NOT NULL,
   `thue` double NOT NULL,
   `tongthanhtien` double NOT NULL,
@@ -66,9 +66,8 @@ CREATE TABLE `cthoadon` (
 --
 
 INSERT INTO `cthoadon` (`idchitiet`, `tungay`, `denngay`, `csdau`, `cscuoi`, `tamtinh`, `thue`, `tongthanhtien`, `dntt`, `mahd`) VALUES
-('CT0419087', '2019-04-16 18:14:49', '2019-04-20 00:00:00', 0, 251, 462590, 46259, 508849, 251, 'HD0419087'),
-('CT0419123', '2019-04-19 10:50:23', '2019-04-20 00:00:00', 0, 130, 213190, 21319, 234509, 130, 'HD0419123'),
-('CT0419647', '2019-04-19 12:31:44', '2019-04-20 00:00:00', 0, 71, 111050, 11105, 122155, 71, 'HD0419647');
+('CT0219123', '2019-01-13 00:00:00', '2019-02-13 00:00:00', 0, 35, 54215, 5421.5, 59636.5, 35, 'HD0219123'),
+('CT0319087', '2019-02-13 00:00:00', '2019-03-15 00:00:00', 35, 70, 54215, 5421.5, 59636.5, 35, 'HD0319123');
 
 -- --------------------------------------------------------
 
@@ -90,9 +89,8 @@ CREATE TABLE `dienke` (
 --
 
 INSERT INTO `dienke` (`madk`, `tendk`, `ngaysx`, `ngaylap`, `trangthai`, `makh`) VALUES
-('DKCE-14G', 'CE-14G', '2018-04-11 00:00:00', '2019-04-16 11:14:49', '1', 'KH087'),
-('DKCE-6Y', 'CE-6Y', '2019-04-16 00:00:00', '2019-04-19 03:50:23', '1', 'KH123'),
-('DKCE-N43', 'CE-N43', '2019-04-16 00:00:00', '2019-04-19 05:31:44', '1', 'KH647');
+('DKCE-14G', 'CE-14G', '2018-04-11 00:00:00', '2019-04-13 17:00:00', '1', 'KH087'),
+('DKCE-41G', 'CE-41G', '2018-01-11 00:00:00', '2019-01-13 11:26:47', '1', 'KH123');
 
 -- --------------------------------------------------------
 
@@ -114,10 +112,9 @@ CREATE TABLE `giadien` (
 --
 
 INSERT INTO `giadien` (`mabac`, `tenbac`, `tusokw`, `densokw`, `dongia`, `ngayapdung`) VALUES
-(1, 'Bậc 1', 0, 50, 1549, '2019-04-18 00:00:00'),
+(1, 'Bậc 1', 0, 50, 1549, '2017-12-30 00:00:00'),
 (2, 'Bậc 2', 51, 100, 1600, '2017-12-29 00:00:00'),
-(3, 'Bậc 3', 101, 200, 1858, '2017-12-28 00:00:00'),
-(4, 'Bậc 42', 201, 300, 2340, '2019-04-09 00:00:00');
+(3, 'Bậc 3', 101, 200, 1858, '2017-12-28 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -140,9 +137,8 @@ CREATE TABLE `hoadon` (
 --
 
 INSERT INTO `hoadon` (`mahd`, `ky`, `ngaylap`, `tongtien`, `trangthai`, `makh`, `manv`) VALUES
-('HD0419087', '2019-04', '2019-04-20 00:00:00', 508849, 0, 'KH087', 'PE1082'),
-('HD0419123', '2019-04', '2019-04-20 00:00:00', 234509, 0, 'KH123', 'PE1082'),
-('HD0419647', '2019-04', '2019-04-20 00:00:00', 122155, 0, 'KH647', 'PE1082');
+('HD0219123', '2019-02', '2019-02-13 00:00:00', 59637, 1, 'KH123', 'PE2002'),
+('HD0319123', '2019-03', '2019-03-13 00:00:00', 59637, 0, 'KH123', 'PE2002');
 
 -- --------------------------------------------------------
 
@@ -154,8 +150,8 @@ CREATE TABLE `khachhang` (
   `makh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `tenkh` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `diachi` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `cmnd` int(11) NOT NULL,
-  `sdt` int(11) NOT NULL,
+  `cmnd` varchar(9) COLLATE utf8_unicode_ci NOT NULL,
+  `sdt` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `hinhanh` varchar(255) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -164,9 +160,9 @@ CREATE TABLE `khachhang` (
 --
 
 INSERT INTO `khachhang` (`makh`, `tenkh`, `diachi`, `cmnd`, `sdt`, `hinhanh`) VALUES
-('KH087', 'Trọng Khang', 'Quận 8 Plus , HCM', 212552087, 391233446, 'khang.jpg'),
-('KH123', 'Diễm Tường', 'Quận 8S , HCM', 212552123, 146563422, 'tuong.jpg'),
-('KH647', 'Thế Vinh', 'Quận 8 , HCM', 212552647, 967564426, 'vinh.jpg');
+('KH087', 'Trọng Khang', 'Quận 8 Plus , HCM', '212552087', '0391233446', 'khang.jpg'),
+('KH123', 'Diễm Tường', 'Quận 8 , HCM', '212552123', '0146563422', 'tuong.jpg'),
+('KH647', 'Thế Vinh', 'Quận 8 , HCM', '212552647', '0967564426', 'vinh.jpg');
 
 -- --------------------------------------------------------
 
@@ -186,12 +182,12 @@ CREATE TABLE `migrations` (
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2019_04_08_064731_chucvu', 1),
-(7, '2019_04_09_025555_giadien', 4),
-(12, '2019_04_09_145810_khachhang', 6),
-(13, '2014_10_12_000000_create_users_table', 7),
-(20, '2019_04_16_015756_dienke', 8),
-(23, '2019_04_16_214628_hoadon', 9),
-(24, '2019_04_16_214733_chitiethd', 9);
+(2, '2019_04_09_025555_giadien', 1),
+(3, '2019_04_09_145810_khachhang', 1),
+(4, '2019_04_16_015756_dienke', 1),
+(5, '2014_10_12_000000_create_users_table', 2),
+(6, '2019_04_16_214628_hoadon', 2),
+(7, '2019_04_16_214733_chitiethd', 2);
 
 -- --------------------------------------------------------
 
@@ -216,9 +212,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`manv`, `tennv`, `email`, `password`, `diachi`, `cmnd`, `sdt`, `hinhanh`, `chucvu`) VALUES
-('PE1082', 'Lê Tuân', 'letuan@stu', '$2y$10$IFgeLr89k4jz0Vjt9bAwiee8ljxBrvGtoWVL0QRmM7Riz9YReopnC', 'Bình Tân , HCM', '212579082', '3955634464', 'tuan.jpg', 1),
-('PE2002', 'Huỳnh An', 'huynhan1996@stu', '$2y$10$lPmHZQtS7xSA1v5./wbdd.i2wIqP81SSmSJKxUBH6kr.CsLN2xt2W', 'Tân Phú , HCM', '212579002', '395563446', 'an.jpg', 2),
-('PE3003', 'Cẩm Tú', 'camtu@stu', '$2y$10$DaOcILatc2EEP.3Hw4GU2OcxRJAqi0Lek67G7iy9X2r77./DR2CXS', 'Quận 8 , HCM', '212579003', '395563446', 'tu.jpg', 3);
+('PE1082', 'Lê Tuân', 'letuan@stu', '$2y$10$kMjZQFcCBL.cffalq98RPOeyP9tHM/QIrU.dI23d2MjqZkbosmq82', 'Bình Tân , HCM', '212579082', '0395563446', 'tuan.jpg', 1),
+('PE2002', 'Huỳnh An', 'huynhan1996@stu', '$2y$10$eHruKUAFsC1gkcwF.oSjae2Yrw80bk.JL.nWqCoyfJhE7qhrMXgtK', 'Tân Phú , HCM', '212579002', '0145561261', 'an.jpg', 2),
+('PE3003', 'Cẩm Tú', 'camtu@stu', '$2y$10$Tk9MJdqXUnD27jxHxHRtgOLVM/HiBC7ic4YivVQ19yuzkM90A3Lpa', 'Quận 8 , HCM', '212579003', '0135634145', 'tu.jpg', 3);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -292,13 +288,13 @@ ALTER TABLE `chucvu`
 -- AUTO_INCREMENT cho bảng `giadien`
 --
 ALTER TABLE `giadien`
-  MODIFY `mabac` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `mabac` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

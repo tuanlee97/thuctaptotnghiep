@@ -28,6 +28,9 @@
            <div class="col-lg-12">
             <h4><i class="fa fa-angle-right"></i> Sửa Điện Kế</h4>
             <div class="form-panel">
+               @if(session('alert'))
+               <div class="alert alert-danger">{{session('alert')}} </div> 
+                @endif
                @if (session('status1'))
         <div class="alert alert-success" role="alert" >
         {{ session('status1') }}

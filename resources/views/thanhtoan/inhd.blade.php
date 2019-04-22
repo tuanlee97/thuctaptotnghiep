@@ -374,7 +374,7 @@
         </tr>
 
     </table>
-         
+         <td><button type="button" class="btn btn-success hidden-print" onclick="javascript:window.location.href='e-stu/thanhtoan/truycap';">Tiếp tục thanh toán</button></td>
 </div>
 
          

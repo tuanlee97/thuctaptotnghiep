@@ -31,7 +31,7 @@ class Nhanvien_TableSeeder extends Seeder
         				'password' => Hash::make("123456"),
         				'diachi'=>"Tân Phú , HCM",
         				'cmnd'=>"212579002",
-        				'sdt'=>"0395563446",
+        				'sdt'=>"0145561261",
         				'hinhanh'=>"an.jpg",
         				'chucvu'=>"2"
     				],
@@ -41,7 +41,7 @@ class Nhanvien_TableSeeder extends Seeder
         				'password' => Hash::make("123456"),
         				'diachi'=>"Quận 8 , HCM",
         				'cmnd'=>"212579003",
-        				'sdt'=>"0395563446",
+        				'sdt'=>"0135634145",
         				'hinhanh'=>"tu.jpg",
         				'chucvu'=>"3"
     				],

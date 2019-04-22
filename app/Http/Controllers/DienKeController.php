@@ -58,7 +58,8 @@ class DienKeController extends Controller
 }
     public function getSua($id)
     {
-        $dienke = DienKe::find($id);
+            $dienke = DienKe::find($id);
+
             $khachhang = KhachHang::all();
             $otherKH = KhachHang::Where('makh','<>',$dienke->makh)->get();
             $hasKH = KhachHang::find($dienke->makh);
@@ -69,6 +70,7 @@ class DienKeController extends Controller
     public function XuLySua(Request $request,$id)
      {      
         $dienkes = DienKe::find($id);
+        $testmdk = DienKe::Where('madk','<>',$dienkes->madk)->get();
           $this->validate($request,
             [
                'tendk'=>'required|min:4|max:20',
@@ -83,8 +85,14 @@ class DienKeController extends Controller
             ]);
 
         // Thêm dữ liệu vào CSDL, ở đây 1 record dữ liệu được xem như một đối tượng (object), vì ta sử dụng Eloquent nên tất cả các bảng trong CSDL đã được ánh xạ thành Model trong Laravel. Do đó dữ liệu mới được thêm vào bằng cách tạo 1 đối tượng mới.
-          $dienkes->madk = "DK".$request->tendk;
-        $dienkes->tendk = $request->tendk;
+          $dienkes->tendk = $request->tendk;
+          $dienkes->madk = "DK".$dienkes->tendk;
+          foreach ($testmdk as $test) {
+              if($test->madk==$dienkes->madk)
+            return redirect()->back()->with('alert',"Tên đã tồn tại, vui lòng nhập lại");
+          }
+          
+        
         $dienkes->ngaysx = $request->ngaysanxuat;
         if($request->trangthai==2){
             $dienkes->makh = null;
@@ -92,7 +100,12 @@ class DienKeController extends Controller
             $dienkes->ngaylap = null;
           }
 
-        if($request->makh!=null && $dienkes->trangthai==0){
+        if($request->makh!=null && $dienkes->trangthai==0 ){
+            $dienkes->makh = $request->makh;
+            $dienkes->trangthai = 1;
+            $dienkes->ngaylap = date('Y-m-d H:i:s');
+        }
+        if($request->makh!=null && $dienkes->trangthai==1 ){
             $dienkes->makh = $request->makh;
             $dienkes->trangthai = 1;
             $dienkes->ngaylap = date('Y-m-d H:i:s');
@@ -101,7 +114,7 @@ class DienKeController extends Controller
             $dienkes->trangthai = $request->trangthai; 
         }
        $dienkes->save();
-        return redirect()->back()->with('status1',"Sửa thành công");
+        return redirect('e-stu/qldk/sua/'.$dienkes->madk)->with('status1',"Sửa thành công");
         }
 
 //

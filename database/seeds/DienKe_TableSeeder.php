@@ -18,6 +18,14 @@ class DienKe_TableSeeder extends Seeder
         				'ngaylap'=>"2019-04-14",
         				'trangthai'=>1,
                         'makh'=>"KH087"
+                    ],
+                    [
+                        'madk'=>"DKCE-41G",
+                        'tendk'=>"CE-41G",
+                        'ngaysx'=>"2018-01-11",
+                        'ngaylap'=>"2019-01-13",
+                        'trangthai'=>1,
+                        'makh'=>"KH123"
                     ]
     			];
 

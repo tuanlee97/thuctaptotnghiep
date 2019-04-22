@@ -50,14 +50,18 @@ class ThanhToanController extends Controller
             $nv = User::find($hoadon->manv);
          return view('thanhtoan.inhd',['ct'=>$ct,'khachhang'=>$khachhang,'giadien'=>$giadien,'nv'=>$nv]);
     }
- public function getCheckout($id)
-    {	$khachhang = KhachHang::find($id);
+
+    public function getCheckout($id)
+    {    $khachhang = KhachHang::find($id);
         $hoadon = Hoadon::Where('makh','=',$id)
-        					->where('trangthai','=',0)
-        					->first();
-       	    $cthd = Chitiet_HD::Where('mahd','=',$hoadon->mahd)->get();
+                         ->where('trangthai','=',0)
+                         ->first();
+             $ct = Chitiet_HD::Where('mahd','=',$hoadon->mahd)->first();
             $nv = User::find($hoadon->manv);
-        return view('thanhtoan.checkout',['cthd'=>$cthd,'khachhang'=>$khachhang,'nv'=>$nv]);
+$giadien = GiaDien::all();
+        $hoadon->trangthai = 1;
+        $hoadon->save();
+        return view('thanhtoan.inhd',['ct'=>$ct,'khachhang'=>$khachhang,'nv'=>$nv,'giadien'=>$giadien]);
 
     }
     public function postCheckout(Request $request,$id)
@@ -71,4 +75,28 @@ class ThanhToanController extends Controller
     {   
         return view('thanhtoan.success');
     }
+
+
+
+ // public function getCheckout($id)
+ //    {	$khachhang = KhachHang::find($id);
+ //        $hoadon = Hoadon::Where('makh','=',$id)
+ //        					->where('trangthai','=',0)
+ //        					->first();
+ //       	    $cthd = Chitiet_HD::Where('mahd','=',$hoadon->mahd)->get();
+ //            $nv = User::find($hoadon->manv);
+ //        return view('thanhtoan.checkout',['cthd'=>$cthd,'khachhang'=>$khachhang,'nv'=>$nv]);
+
+ //    }
+ //    public function postCheckout(Request $request,$id)
+ //    {   $hoadon = Hoadon::find($id);
+ //        $hoadon->trangthai = 1;
+ //        $hoadon->save();
+ //        return redirect('e-stu/thanhtoan/success');
+ //    }
+   
+ //     public function getSuccess()
+ //    {   
+ //        return view('thanhtoan.success');
+ //    }
  }

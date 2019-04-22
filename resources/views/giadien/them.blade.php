@@ -27,6 +27,11 @@
         <div class="alert alert-success" role="alert" >
         {{ session('status1') }}
         </div>
+        @endif
+                  @if (session('loi'))
+        <div class="alert alert-danger" role="alert" >
+        {{ session('loi') }}
+        </div>
           @endif
                   @if(count($errors)>0)
                 <div class="alert alert-danger">

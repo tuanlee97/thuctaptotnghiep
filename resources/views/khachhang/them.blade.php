@@ -23,7 +23,11 @@
           <div class="col-lg-12">
             <h4><i class="fa fa-angle-right"></i> Thêm khách hàng</h4>
             <div class="form-panel">
-
+     @if (session('thongbao'))
+        <div class="alert alert-danger" role="alert" >
+        {{ session('thongbao') }}
+        </div>
+          @endif
                @if (session('status1'))
         <div class="alert alert-success" role="alert" >
         {{ session('status1') }}

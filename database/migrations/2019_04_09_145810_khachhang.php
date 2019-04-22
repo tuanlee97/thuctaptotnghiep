@@ -18,8 +18,8 @@ class Khachhang extends Migration
             $table->primary('makh');
             $table->string('tenkh');
             $table->string('diachi');
-            $table->integer('cmnd');
-            $table->integer('sdt');
+            $table->string('cmnd',9);
+            $table->string('sdt',10);
             $table->string('hinhanh');
             
         });

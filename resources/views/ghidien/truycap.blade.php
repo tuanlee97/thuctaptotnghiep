@@ -29,7 +29,14 @@
                 {{ session('loi') }}
                 </div>
                @endif
-              
+              @if(count($errors)>0)
+                <div class="alert alert-danger">
+                    @foreach ($errors -> all() as $err)
+                    {{$err}}<br>
+                    @endforeach
+                </div>
+
+                @endif
             <div class="form-panel">
               <h4 class="mb"><i class="fa fa-angle-right"></i> Ghi số điện</h4>
               <form class="form-inline" role="form" method="post" action="e-stu/ghidien/truycap">

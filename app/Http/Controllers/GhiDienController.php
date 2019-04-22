@@ -61,13 +61,15 @@ class GhiDienController extends Controller
       public function xulighidien(Request $request,$id){
       	$this->validate($request,
        	[
-         'cscuoi' => 'required'
+         'cscuoi' => 'required|numeric'
      	],
      [
         'cscuoi.required'=>'Bạn chưa nhập chỉ số điện mới',
+        'cscuoi.numeric'=>'Chỉ số mới phải là kiếu số',
 
         
 	    ]);	
+        if((double)$request->cscuoi < 0) return redirect()->back()->with('loi',"Chỉ số mới phải lớn hơn 0, vui lòng kiểm tra lại");
 	      	$khachhang = KhachHang::find($id);
 	      	$prev_month = strtotime(date("Y-m-d", strtotime(date('my'))) . " -1 month");
 	  		$prev_month = strftime("%m%y", $prev_month);
@@ -82,6 +84,9 @@ class GhiDienController extends Controller
        			//Tạo hóa đơn
        		$hoadon = new Hoadon();
        		$hoadon->mahd = "HD".date('my',strtotime($request->ngayghi)).substr($khachhang->makh,2);
+          $testmhd = Hoadon::find($hoadon->mahd);
+          if($testmhd)
+            return redirect()->back()->with('loi',"Khách hàng này đã được ghi điện tháng này");
        		$hoadon->ky = date('Y-m',strtotime($request->ngayghi));
        		$hoadon->ngaylap = date('Y-m-d',strtotime($request->ngayghi));
        		$hoadon->tongtien = 0; //Khởi tạo cột tổng tiền

@@ -61,6 +61,14 @@
         {{ session('status1') }}
         </div>
           @endif
+          @if(count($errors)>0)
+                <div class="alert alert-danger">
+                    @foreach ($errors -> all() as $err)
+                    {{$err}}<br>
+                    @endforeach
+                </div>
+
+                @endif
               <form class="form-horizontal style-form"  method="post" enctype="multipart/form-data" action="e-stu/ghidien/xulighidien/{{$khachhang->makh}}">@csrf
                 <label class="control-label col-md-3" >Ngày ghi điện: </label>
                 <div id="datepicker" class="input-group date" data-date-format="dd-mm-yyyy"> 
