@@ -64,7 +64,8 @@
                       &emsp;&emsp;<b>{{$gia->mabac}}</b>
                     </td>
                     <td class="hidden-phone"><b>{{$gia->tenbac}}</b></td>
-                    <td>Từ {{$gia->tusokw}} - {{$gia->densokw}} kWh </td>
+                    @if($gia->densokw==9999) <td>Từ {{$gia->tusokw}} kWh trở lên </td> 
+                    @else<td>Từ {{$gia->tusokw}} - {{$gia->densokw}} kWh </td>@endif
                     <td><span class="label label-info label-mini">{{$gia->dongia}}</span></td>
                     <td>
                       <button class="btn btn-primary btn-xs" onclick="javascript:window.location.href='e-stu/qlgiadien/sua/{{$gia->mabac}}';"><i class="fa fa-pencil"></i></button>

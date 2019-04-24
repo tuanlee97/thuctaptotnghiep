@@ -41,7 +41,7 @@ class ThanhToanController extends Controller
          }
     }
 
-     public function getInhoadon($id)
+     public function getInhoadon($mahd)
     {   $giadien = GiaDien::all();
         $hoadon = Hoadon::find($id);
         $khachhang = KhachHang::Where('makh','=',$hoadon->makh)
@@ -57,24 +57,15 @@ class ThanhToanController extends Controller
                          ->where('trangthai','=',0)
                          ->first();
              $ct = Chitiet_HD::Where('mahd','=',$hoadon->mahd)->first();
-            $nv = User::find($hoadon->manv);
+            $nv = auth()->user();
 $giadien = GiaDien::all();
         $hoadon->trangthai = 1;
         $hoadon->save();
         return view('thanhtoan.inhd',['ct'=>$ct,'khachhang'=>$khachhang,'nv'=>$nv,'giadien'=>$giadien]);
 
     }
-    public function postCheckout(Request $request,$id)
-    {   $hoadon = Hoadon::find($id);
-        $hoadon->trangthai = 1;
-        $hoadon->save();
-        return redirect('e-stu/thanhtoan/success');
-    }
+
    
-     public function getSuccess()
-    {   
-        return view('thanhtoan.success');
-    }
 
 
 

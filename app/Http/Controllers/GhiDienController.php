@@ -45,7 +45,7 @@ class GhiDienController extends Controller
     }
 
     
-    public function postInhoadon($id)
+    public function postIngiaybao($id)
    {   		
        $khachhang = KhachHang::find($id);
 
@@ -120,41 +120,58 @@ class GhiDienController extends Controller
       		$dntt =$cthoadon->cscuoi  - $cthoadon->csdau;
       		$cthoadon->dntt =$dntt;
       		$banggia = GiaDien::all();
-      		$i = 0 ;
-      		$tien = 0;
-				foreach ($banggia as $gia) {
-					
-		if($dntt > 0){
-					if($i < 2 ){
-									if($dntt >= 50) {
-										$tien += 50 * $gia->dongia;
-										$dntt -= 50 ;
-										$i++;
-									}
-									else{
-										$tien += $dntt * $gia->dongia;
-										$dntt -= $dntt;
-									}
-								}
-					else{
-									if($dntt >= 100) {
-									$tien += 100 * $gia->dongia;
-									$dntt -= 100 ;
-									
-								}
-								else{
-									$tien += $dntt * $gia->dongia;
-									$dntt -= $dntt;
-								}
+        $i = 0 ;
+          $tien = 0;
+          $giamax = GiaDien::max('dongia');
 
-					}
-					
+  if( $dntt > 0){
+    //lặp 1 : tính tiền 1 lượt theo giá
+        foreach ($banggia as $gia) {        
+            if($dntt > 0){
+                  if($i < 2 ){
+                          if($dntt >= 50) {
+                            $tien += 50 * $gia->dongia;
+                            $dntt -= 50 ;
+                            $i++;
+                          }
+                          else{
+                            $tien += $dntt * $gia->dongia;
+                            $dntt -= $dntt;
+                          }
+                        }
+                  else{
+                          if($dntt >= 100) {
+                          $tien += 100 * $gia->dongia;
+                          $dntt -= 100 ;
+                          
+                        }
+                        else{
+                          $tien += $dntt * $gia->dongia;
+                          $dntt -= $dntt;
+                        }
 
-				} 
-		else break;
-					
-				}
+                  }
+                  
 
+                } 
+            else break;
+                  
+                }
+/// Lăp 2 :
+      if($dntt > 0)
+          while ( $dntt > 0) {
+                  if($dntt >= 100){
+                    $tien += 100 * $giamax;
+                    $dntt -= 100 ;
+                  }
+                   else{
+                          $tien += $dntt * $giamax;
+                          $dntt -= $dntt;
+                        }
+                }      
+
+
+  }
        		$cthoadon->tamtinh =$tien;
        		$cthoadon->thue = $cthoadon->tamtinh*0.1;
        		$cthoadon->tongthanhtien = $cthoadon->tamtinh + $cthoadon->thue;
@@ -173,6 +190,23 @@ class GhiDienController extends Controller
 
 
      // }
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

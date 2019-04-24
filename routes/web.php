@@ -110,7 +110,7 @@ Route::group(['prefix'=>'e-stu','middleware'=>'forceLogin'],function(){
        
           Route::get('success','GhiDienController@getSuccess');
            
-        Route::post('print/{id}','GhiDienController@postInhoadon');
+        Route::post('print/{id}','GhiDienController@postIngiaybao');
     });
 
        Route::group(['prefix'=>'tracuuno'],function(){

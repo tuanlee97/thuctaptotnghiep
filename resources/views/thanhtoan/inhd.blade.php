@@ -171,11 +171,27 @@
                     }
                  //đơn giá 
                   $arrDG = array();
-                foreach ($giadien as $gia) {
-                  if($vonglap > 0)
-                      $arrDG[] = $gia->dongia;
-                  $vonglap -- ;
-                }         
+                  $sobacgia = count($giadien);
+                  $dem = 0;
+                  $giamax = 0 ;
+                  if($vonglap > 0){
+                    foreach ($giadien as $gia) {
+                          if($vonglap > 0){
+                              $arrDG[] = $gia->dongia;
+                              $giamax =  $gia->dongia;
+                              $dem ++;
+                            }
+                          $vonglap -- ;
+                        } 
+                      if($vonglap>0 && $dem == $sobacgia  )
+                      {
+                        while ($vonglap>0) {
+                          $arrDG[] = $giamax;
+                          $vonglap -- ;
+                        }
+                      }     
+              }
+          
                    //thành tiền
                   $arrTT = array();
                   for($i=0;$i<count($arrDNTT);$i++)

@@ -6,6 +6,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Http\Request;
 use App\Models\KhachHang;
+use App\Models\DienKe;
 use Gate;
 
 
@@ -153,7 +154,15 @@ class KhachHangController extends Controller
     public function XuLyXoa($id)
     {
           $khachhangs = KhachHang::find($id);
-            $khachhangs->delete();
+          $dienke = DienKe::Where('makh','=',$khachhangs->makh)->first();
+          if($dienke){
+            $dienke->ngaylap=null;
+            $dienke->trangthai = 0 ;
+            $dienke->makh = null ;
+            $dienke->save();
+          }
+          $khachhangs->delete();
         return redirect('e-stu/qlkh/danhsach')->with('status1','Xóa Thành Công');
+            
     }
 }
