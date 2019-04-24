@@ -32,9 +32,9 @@ class GiaDienController extends Controller
         $this->validate($request,
             [
                 'tenbac'=>'required|unique:giadien,tenbac|min:4|max:20',
-                'tusokwh'=>'required|integer',
-                'densokwh'=>'required|integer',
-                'dongia'=>'required|numeric',
+                'tusokwh'=>'required|unique:giadien,tusokw|integer',
+                'densokwh'=>'required|unique:giadien,densokw|integer',
+                'dongia'=>'required|unique:giadien,dongia|numeric',
                 'ngayapdung'=>'required'
                 // Unique: Dữ liệu nhập vào không được trùng với dữ liệu hiện tại
                 // Cú pháp của unique:tên_bảng,tên_cột
@@ -45,12 +45,13 @@ class GiaDienController extends Controller
                 'tenbac.min'=>'Tên phải gồm ít nhất 4 ký tự!',
                 'tusokwh.required'=>'Bạn chưa nhập giá trị từ số',
                 'tusokwh.integer'=>'Giá trị phải là số nguyên',
+                'tusokwh.unique'=>'Giá trị từ số này đã tồn tại',
                 'densokwh.required'=>'Bạn chưa nhập giá trị đến số',
                 'densokwh.integer'=>'Giá trị phải là số nguyên',
-                
+                'densokwh.unique'=>'Giá trị đến số này đã tồn tại',
                 'dongia.required'=>'Bạn chưa nhập giá trị đơn giá',
                 'dongia.numeric'=>'Giá trị phải là kiểu số',
-                
+                'dongia.unique'=>'Đơn giá này đã tồn tại',
                 'ngayapdung.required'=>'Bạn chưa nhập ngày áp dụng ',
             ]);
 
@@ -78,7 +79,7 @@ class GiaDienController extends Controller
     public function XuLySua(Request $request,$id)
     {
         $giadiens = GiaDien::find($id);
-        $other_name = GiaDien::Where('tenbac','<>',$giadiens->tenbac)->get();
+        $other_gia = GiaDien::Where('tenbac','<>',$giadiens->tenbac)->get();
           $this->validate($request,
             [
                 'tenbac'=>'required|min:4|max:20',
@@ -107,12 +108,20 @@ class GiaDienController extends Controller
             ]);
 
         // Thêm dữ liệu vào CSDL, ở đây 1 record dữ liệu được xem như một đối tượng (object), vì ta sử dụng Eloquent nên tất cả các bảng trong CSDL đã được ánh xạ thành Model trong Laravel. Do đó dữ liệu mới được thêm vào bằng cách tạo 1 đối tượng mới.
-         foreach ($other_name as $other) {
+         foreach ($other_gia as $other) {
               if($request->tenbac == $other->tenbac)
                 return redirect()->back()->with('alert',"Tên bậc đã tồn tại, vui lòng chọn tên khác");
+            if($request->tusokwh == $other->tusokw)
+                return redirect()->back()->with('alert',"Giá trị từ số này đã tồn tại ở bậc giá điện khác");
+            if($request->densokwh == $other->densokw)
+                return redirect()->back()->with('alert',"Giá trị đến số này đã tồn tại ở bậc giá điện khác");
+            if($request->dongia == $other->dongia)
+                return redirect()->back()->with('alert',"Giá trị đơn giá này đã tồn tại ở bậc giá điện khác");
+
          }
          
         if($request->tusokwh > $request->densokwh ) return redirect()->back()->with('alert',"Giá trị từ số phải nhỏ hơn đến số");
+        if($request->tusokwh <= 0 || $request->densokwh <=0 ) return redirect()->back()->with('loi',"Không được nhập giá trị âm");
         if((double)$request->dongia <= 0 ) return redirect()->back()->with('alert',"Đơn giá phải lớn hơn 0");
         $giadiens->tenbac = $request->tenbac;
         $giadiens->tusokw = $request->tusokwh;
