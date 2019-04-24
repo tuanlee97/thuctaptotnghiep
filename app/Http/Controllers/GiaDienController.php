@@ -57,6 +57,7 @@ class GiaDienController extends Controller
 
         // Thêm dữ liệu vào CSDL, ở đây 1 record dữ liệu được xem như một đối tượng (object), vì ta sử dụng Eloquent nên tất cả các bảng trong CSDL đã được ánh xạ thành Model trong Laravel. Do đó dữ liệu mới được thêm vào bằng cách tạo 1 đối tượng mới.
         if($request->tusokwh > $request->densokwh ) return redirect()->back()->with('loi',"Giá trị từ số phải nhỏ hơn đến số");
+        if($request->tusokwh <= 0 || $request->densokwh <=0 ) return redirect()->back()->with('loi',"Không được nhập giá trị âm");
         if((double)$request->dongia <= 0 ) return redirect()->back()->with('loi',"Đơn giá phải lớn hơn 0");
         $giadiens = new GiaDien;
         $giadiens->tenbac = $request->tenbac;

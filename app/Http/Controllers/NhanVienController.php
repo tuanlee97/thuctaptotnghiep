@@ -85,7 +85,7 @@ class NhanVienController extends Controller
         {
             $file = $request->file('hinhanh');
             $duoi = $file->getClientOriginalExtension();
-            if($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
+             if($duoi != 'jpg'&& $duoi != 'JPG' && $duoi != 'png'&& $duoi != 'PNG' && $duoi != 'jpeg'&& $duoi != 'JPEG')
             {
                 return redirect()->back()->with('loi',"Bạn chọn sai định dạng file");
             }
@@ -177,7 +177,7 @@ class NhanVienController extends Controller
         {
             $file = $request->file('hinhanh');
             $duoi = $file->getClientOriginalExtension();
-            if($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
+             if($duoi != 'jpg'&& $duoi != 'JPG' && $duoi != 'png'&& $duoi != 'PNG' && $duoi != 'jpeg'&& $duoi != 'JPEG')
             {
                 return redirect('e-stu/qlnv/sua/'.$id)->with('loi',"Bạn chọn sai định dạng file");
             }

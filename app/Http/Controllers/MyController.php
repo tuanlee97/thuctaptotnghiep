@@ -20,14 +20,14 @@ class MyController extends Controller
 $this->validate($request,
         [
                 'manv'=>'required',
-                'password'=>'required|min:6|max:32',
+                'password'=>'required|min:6|max:20',
         ],
 
         [
                 'manv.required'=>'Vui lòng nhập mã nhân viên',
                 'password.required'=>'Bạn chưa nhập mật khẩu',
                 'password.min'=>'Mật khẩu không được nhỏ hơn 6 kí tự',
-                'password.max'=>'Mật khẩu không được lớn hơn 32 kí tự'
+                'password.max'=>'Mật khẩu không được lớn hơn 20 kí tự'
 
         ]);
 

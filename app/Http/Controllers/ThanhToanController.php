@@ -43,11 +43,11 @@ class ThanhToanController extends Controller
 
      public function getInhoadon($mahd)
     {   $giadien = GiaDien::all();
-        $hoadon = Hoadon::find($id);
+        $hoadon = Hoadon::find($mahd);
         $khachhang = KhachHang::Where('makh','=',$hoadon->makh)
                             ->first();
             $ct = Chitiet_HD::Where('mahd','=',$hoadon->mahd)->first();
-            $nv = User::find($hoadon->manv);
+            $nv = auth()->user();
          return view('thanhtoan.inhd',['ct'=>$ct,'khachhang'=>$khachhang,'giadien'=>$giadien,'nv'=>$nv]);
     }
 
